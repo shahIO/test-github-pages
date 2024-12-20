@@ -1,3 +1,18 @@
+/* Define CSS variables */
+:root {
+    --primary-bg-color: #333;
+    --primary-text-color: #fff;
+    --secondary-bg-color: #444;
+    --accent-color: #00aaff;
+    --body-bg-color: #f0f0f0;
+    --main-bg-color: #fff;
+    --text-color: #555;
+    --heading-color: #333;
+    --font-family: 'Helvetica Neue', Arial, sans-serif;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --transition-duration: 0.3s;
+}
+
 /* Reset some default browser styles */
 body, h1, h2, p, ul {
     margin: 0;
@@ -6,12 +21,12 @@ body, h1, h2, p, ul {
 
 /* Set default font and background color */
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: var(--font-family);
+    background-color: var(--body-bg-color);
     line-height: 1.6;
     padding: 20px;
     opacity: 0;
-    transition: opacity 0.25s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 body.loaded {
@@ -20,11 +35,11 @@ body.loaded {
 
 /* Style the header */
 header {
-    background: #333;
-    color: #fff;
+    background: var(--primary-bg-color);
+    color: var(--primary-text-color);
     padding: 20px;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
 }
 
 header h1 {
@@ -35,7 +50,7 @@ header h1 {
 /* Style the navigation */
 nav {
     margin: 20px 0;
-    background: #444;
+    background: var(--secondary-bg-color);
     padding: 10px;
     border-radius: 5px;
 }
@@ -45,32 +60,34 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 10px 15px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #fff;
+    color: var(--primary-text-color);
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: color var(--transition-duration) ease;
 }
 
 nav ul li a:hover {
-    color: #00aaff;
+    color: var(--accent-color);
 }
 
 /* Style the main content */
 main {
-    background: #fff;
+    background: var(--main-bg-color);
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
     margin-bottom: 20px;
     border-radius: 5px;
 }
 
+/* Style individual sections */
 section {
     margin-bottom: 20px;
 }
@@ -78,22 +95,109 @@ section {
 section h2 {
     font-size: 2em;
     margin-bottom: 10px;
-    color: #333;
+    color: var(--heading-color);
 }
 
 section p {
     font-size: 1.2em;
-    color: #555;
+    color: var(--text-color);
+}
+
+/* Style the Experience section */
+#experience {
+    background: #eee;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+}
+
+#experience .experience-item {
+    margin-bottom: 15px;
+}
+
+#experience .experience-item h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: var(--heading-color);
+}
+
+#experience .experience-item p {
+    margin: 5px 0;
+    color: #666;
 }
 
 /* Style the footer */
 footer {
-    background: #333;
-    color: #fff;
+    background: var(--primary-bg-color);
+    color: var(--primary-text-color);
     text-align: center;
     padding: 15px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    section h2 {
+        font-size: 1.5em;
+    }
+
+    section p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 8px 0;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    section h2 {
+        font-size: 1.2em;
+    }
+
+    section p {
+        font-size: 0.9em;
+    }
+
+    footer {
+        padding: 10px 0;
+        font-size: 0.9em;
+    }
 }
